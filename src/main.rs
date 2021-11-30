@@ -16,7 +16,7 @@ fn main() -> xtrm::Result<()> {
     stdout.queue(xtrm::terminal::EnterAlternateScreen)?
           .queue(xtrm::cursor::Hide)?
           .queue(xtrm::style::Print("before resizing".to_string()))?
-          .queue(xtrm::terminal::SetSize(1000, 1000))?
+          .queue(xtrm::terminal::SetSize(10, 10))?
           .queue(xtrm::style::Print("after resizing".to_string()))?
           .queue(xtrm::cursor::MoveTo(0, 1))?
           .queue(xtrm::style::Print("After MoveTo".to_string()))?;
@@ -48,7 +48,11 @@ fn main() -> xtrm::Result<()> {
             stdout.queue(xtrm::cursor::MoveTo(0, 2))?
                   .queue(xtrm::style::Print("...waiting\n"))?;
         }
-        stdout.queue(xtrm::cursor::MoveTo(x, y))?
+        stdout.queue(xtrm::cursor::MoveTo(0, 0))?
+              .queue(xtrm::style::Print("                              "))?
+              .queue(xtrm::cursor::MoveTo(0, 0))?
+              .queue(xtrm::style::Print(format!("x = {}, y = {}", x, y)))?
+              .queue(xtrm::cursor::MoveTo(x, y))?
               .queue(xtrm::style::Print("."))?;
         stdout.flush()?;
         std::thread::sleep(time::Duration::from_millis(1));
