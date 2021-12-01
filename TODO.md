@@ -1,3 +1,0 @@
-- [ ] store cursor state and then restore
-- [ ] bounds checking on cursor location
-- [ ] increase resolution so that things can be smaller
