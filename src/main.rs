@@ -32,7 +32,7 @@ fn main() -> io::Result<()> {
         for (_, event) in glfw::flush_messages(&events) {
             println!("{:?}", event);
             match event {
-                glfw::WindowEvent::Key(glfw::Key::Escape, _, glfw::Action::Press, _) => {
+                glfw::WindowEvent::Key(glfw::Key::Escape | glfw::Key::Q, _, glfw::Action::Press, _) => {
                     window.set_should_close(true);
                 },
                 _ => {},
